@@ -38,6 +38,5 @@ public int getTime(){
 	return time;
 }
 
-abstract public double calcularEfectoNocivo();
 
 }

@@ -11,8 +11,8 @@ public WeRecycle(String name){
 	pro = new Product[50];
 }
 
-public String addWaste(String id,String name,String origin,String color,int time,String type,String desc){
-	Recycling rec = new Recycling(id,name,origin,color,time,type,desc);
+public String addWaste(String id,String name,String origin,String color,int time,String prodRef,String type,String desc){
+	Recycling rec = new Recycling(id,name,origin,color,time,prodRef,type,desc);
 	boolean val =false;
 	String msg ="";
 	for (int i =0;i<res.length && !val ;i++ ) {
@@ -22,11 +22,12 @@ public String addWaste(String id,String name,String origin,String color,int time
 			msg="Waste added sucessfully";
 		}
 	}
+	return msg;
 
 }
 
-public String addWaste(String id,String name,String origin,String color,int time,String tip){
-	Inert rec = new Inert(id,name,origin,color,time,tip);
+public String addWaste(String id,String name,String origin,String color,int time,String prodRef,String tip){
+	Inert rec = new Inert(id,name,origin,color,time,prodRef,tip);
 	boolean val =false;
 	String msg ="";
 	for (int i =0;i<res.length && !val ;i++ ) {
@@ -36,10 +37,11 @@ public String addWaste(String id,String name,String origin,String color,int time
 			msg="Waste added sucessfully";
 		}
 	}
+	return msg;
 
 }
-public String addWaste(String id,String name,String origin,String color,int time,boolean compost){
-	BioDegradable rec = new BioDegradable(id,name,origin,color,time,compost);
+public String addWaste(String id,String name,String origin,String color,int time,String prodRef,boolean compost){
+	BioDegradable rec = new BioDegradable(id,name,origin,color,time,prodRef,compost);
 	boolean val =false;
 	String msg ="";
 	for (int i =0;i<res.length && !val ;i++ ) {
@@ -49,6 +51,7 @@ public String addWaste(String id,String name,String origin,String color,int time
 			msg="Waste added sucessfully";
 		}
 	}
+	return msg;
 
 }
 

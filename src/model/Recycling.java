@@ -12,7 +12,5 @@ public Recycling(String id,String name,String origin,String color,int time,Strin
 	this.type=type;
 	this.desc=desc;
 }
-public double calcularEfectoNocivo(){
 
-}
 }

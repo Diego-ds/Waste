@@ -18,4 +18,18 @@ public String getId(){
 public String getName(){
 	return name;
 }
+
+public String addWasteProd(Waste obj){
+	boolean val =false;
+	String msg = "";
+	for (int i =0;i<residuos.length && !val ;i++ ) {
+		if(residuos[i]==null){
+			residuos[i]=obj;
+			val = true;
+			msg= "Waste added sucesfully to the product";
+		}
+	}
+	return msg;
+
+}
 }
