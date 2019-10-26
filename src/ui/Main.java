@@ -37,7 +37,7 @@ public void createWaste(){
 			compost=true;
 		}
 		System.out.println("Enter the id of the product that produce this waste\nHere a list of the registered products to help you out\n");
-		
+		//Crear metodo en controladora para displayar productos
 		String prodRef = teclado.nextLine();
 
 		String id,String name,String origin,String color,int time,String prodRef,boolean compost
