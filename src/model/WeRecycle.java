@@ -55,6 +55,25 @@ public String addWaste(String id,String name,String origin,String color,int time
 
 }
 
+public String addProduct(String id,String name,String desc){
+	Product obj = new Product(id,name,desc);
+	boolean val = false;
+	String msg = "";
+	if(buscarProducto(id)==null){
+		for (int i =0;i<pro.length && !val ;i++ ) {
+			if(pro[i]==null){
+				pro[i]=obj;
+				msg="Product added sucessfully";
+				val=true;
+			}
+		}
+	}
+	else{
+		msg="Error: The product is already registered.";
+	}
+	return msg;
+}
+
 public Product buscarProducto(String id){
 	boolean val=false;
 	Product obj =null;
@@ -67,6 +86,19 @@ public Product buscarProducto(String id){
 	return obj;
 
 }
+
+public Waste buscarWaste(String name){
+	boolean val =false;
+	Waste obj = null;
+	for (int i =0;i<res.length && !val ;i++ ) {
+		if(res[i].getName().equalsIgnoreCase(name)){
+			obj=res[i];
+			val=true;
+		}
+	}
+	return obj;
+}
+
 
 
 }
