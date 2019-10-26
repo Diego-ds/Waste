@@ -38,5 +38,25 @@ public int getTime(){
 	return time;
 }
 
+public double calcularEfectoNocivo(){
+	double res = 0;
+	if(origin.equalsIgnoreCase(Waste.INDUSTRIAL)){
+		res = time*0.10;
+	}
+	else if(origin.equalsIgnoreCase(Waste.DOMICILIARIO)){
+		res=time*0.05;
+	}
+	else if(origin.equalsIgnoreCase(Waste.CONSTRUCCION)){
+		res=time*0.08;
+	}
+	else if(origin.equalsIgnoreCase(Waste.MUNICIPAL)){
+		res=time*0.12;
+	}
+	else {
+		res=time*0.15;
+	}
+	
+	return res;
+}
 
 }

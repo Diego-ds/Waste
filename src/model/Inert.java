@@ -6,4 +6,10 @@ public Inert(String id,String name,String origin,String color,int time,String pr
 	super(id,name,origin,color,time,prodRef);
 	this.tip=tip;
 }
+public double calcularEfectoNocivo(){
+	double res = 0;
+	res= super.calcularEfectoNocivo();
+	return res;
+
+}
 }

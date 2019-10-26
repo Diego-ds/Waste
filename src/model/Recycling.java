@@ -12,5 +12,15 @@ public Recycling(String id,String name,String origin,String color,int time,Strin
 	this.type=type;
 	this.desc=desc;
 }
+//Getters
+public int getTime(){
+	return super.getTime();
+}
+
+public double calcularEfectoNocivo(){
+	double res = 0;
+	res= super.calcularEfectoNocivo()-this.getTime()*0.02;
+	return res;
+}
 
 }
