@@ -16,6 +16,24 @@ public Recycling(String id,String name,String origin,String color,int time,Strin
 public int getTime(){
 	return super.getTime();
 }
+public String getName(){
+	return super.getName();
+}
+public String getOrigin(){
+	return super.getOrigin();
+}
+public String getColor(){
+	return super.getOrigin();
+}
+public String getId(){
+	return super.getId();
+}
+
+public String toString(){
+	String msg = "";
+	msg = getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nType and description: "+this.type+"-"+this.desc+"\n";
+	return msg;
+}
 
 public double calcularEfectoNocivo(){
 	double res = 0;
