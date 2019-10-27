@@ -43,8 +43,17 @@ public static void main(String args[]){
             String k = teclado2.nextLine();
             obj.isUsable(k);
             break;
+            case 8:
+            System.out.println("Enter the identifier of the product to display the waste");
+            String t = teclado2.nextLine();
+            obj.orderWaste(t);
+            break;
+            case 9:
+            System.out.println("Thank you");
+            val=false;
+            break;
             default:
-            val = false;
+            System.out.println("Error: Wrong option");
 
 
 		}
@@ -62,11 +71,13 @@ public void showMenu(){
 	System.out.println("<6> to calculate the nocive effect of a waste\n");
 	System.out.println("<7> to display if a Biodegradable or Recyclable waste is usable or not\n");
 	System.out.println("<8> to list the waste by its nocive effect from lower to more\n");
-	System.out.println("<8> to Exit\n");
+	System.out.println("<9> to Exit\n");
 
 
 }
-
+public void orderWaste(String t){
+	System.out.println(objRec.orderWaste(t));
+}
 public void isUsable(String n){
 	System.out.println(objRec.isUsable(n));
 }
@@ -86,7 +97,7 @@ public void showWaste(){
 
 public void createWaste(){
 	Scanner teclado = new Scanner(System.in);
-	Scanner teclado2= new Scanner(System.in);
+	Scanner teclado2 = new Scanner(System.in);
 	Scanner teclado3 = new Scanner(System.in);
 	int option = 0;
 	System.out.println("\nWhat type of waste do you want to add.\n<1> for Biodegradable\n<2> for Recyclable\n<3> for Inert\n");
@@ -286,13 +297,21 @@ public void createProductAddWaste(){
 		System.out.println("Here is a list of the waste to help you out\n");
 		System.out.println(objRec.showWaste()); 
 		System.out.println("You can add a waste just typing the name of the waste\n");
+		System.out.println("Note: If you have not registered waste yet or you want to create a new one. Enter <3>\n");
 		namewas=teclado.nextLine();
-		System.out.println(objRec.buscarProducto(id).addWasteProd(objRec.buscarWaste(namewas)));
-		System.out.println("You want to add another waste?\n<1> Yes\n<2> No\n");
-		option= teclado2.nextInt();
+		int aux = Integer.parseInt(namewas);
+		if(aux==3){
+			createWaste();
+		}
+		else{
+			System.out.println(objRec.buscarProducto(id).addWasteProd(objRec.buscarWaste(namewas)));
+			System.out.println("You want to add another waste?\n<1> Yes\n<2> No\n");
+			option= teclado2.nextInt();
 			if(option==2){
 				help=2;
 			}
+		}
+		
 		} 
 	}
 	

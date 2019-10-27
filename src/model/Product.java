@@ -18,6 +18,9 @@ public String getId(){
 public String getName(){
 	return name;
 }
+public Waste[] getWaste(){
+	return residuos;
+}
 
 public String addWasteProd(Waste obj){
 	boolean val =false;

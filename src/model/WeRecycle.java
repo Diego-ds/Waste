@@ -10,7 +10,19 @@ public WeRecycle(String name){
 	res = new Waste[50];
 	pro = new Product[50];
 }
-
+/**
+* This method adds an waste <br>
+* <b>post: </b> The waste has been added.<br>
+* @param id Id of the waste. id != null &amp;&amp; id != "".
+* @param name Name of the waste. name != null &amp;&amp; name != "".
+* @param origin Origin of the waste. origin != null &amp;&amp; origin != "".
+* @param color Color of the waste. color != null &amp;&amp; color != "".
+* @param time Time to decompose. time != null &amp;&amp; time != "".
+* @param prodRef The id of the product which produce the waste. prodRef != null &amp;&amp; prodRef != "".
+* @param type Type of the waste. type != null &amp;&amp; type != "".
+* @param desc Description of the waste. desc != null &amp;&amp; desc != "".
+* @return msg Indicating that the waste was created. msg != null &amp;&amp; msg != "".
+*/
 public String addWaste(String id,String name,String origin,String color,int time,String prodRef,String type,String desc){
 	Recycling rec = new Recycling(id,name,origin,color,time,prodRef,type,desc);
 	boolean val =false;
@@ -91,7 +103,7 @@ public String showNociveEffect(String n){
 				msg= "The nocive effect of the waste "+obj.getName()+" identified as "+obj.getId()+ " is "+noc+"\n";
 				val = true;
 			}
-			else{
+			else if(buscarWaste(n) instanceof Inert){
 				Inert obj = (Inert) buscarWaste(n);
 				String noc = String.valueOf(obj.calcularEfectoNocivo());
 				msg= "The nocive effect of the waste "+obj.getName()+" identified as "+obj.getId()+ " is "+noc+"\n";
@@ -105,6 +117,34 @@ public String showNociveEffect(String n){
 	}
 	return msg;
 }
+public double calculateNociveEffect(String n){
+	boolean val = false;
+	String msg = "";
+	double noc=0;
+	for (int i = 0;i<res.length && !val ;i++ ) {
+		if(buscarWaste(n)!=null){
+			if(buscarWaste(n) instanceof BioDegradable){
+				BioDegradable obj = (BioDegradable) buscarWaste(n);
+				noc = obj.calcularEfectoNocivo();
+				val = true;
+			}
+			else if(buscarWaste(n) instanceof Recycling){
+				Recycling obj = (Recycling) buscarWaste(n);
+				noc = obj.calcularEfectoNocivo();
+				val = true;
+			}
+			else{
+				Inert obj = (Inert) buscarWaste(n);
+				noc = obj.calcularEfectoNocivo();
+				val = true;
+			}
+		}
+
+	}
+	return noc;
+}
+
+
 
 public String isUsable(String n){
 	String msg = "";
@@ -128,6 +168,53 @@ public String isUsable(String n){
 		msg="Error: Cannot found waste. Please try again";
 	}
 	return msg;
+}
+
+public String orderWaste(String n){
+	String msg = "";
+	boolean val = false;
+    int cont = 0;
+    Waste obj[]= new Waste[20];
+    Waste aux;
+
+    while(cont<pro.length && !val){
+    	if(pro[cont]!=null){
+    		if(pro[cont].getId().equalsIgnoreCase(n)){
+    			obj=pro[cont].getWaste();
+
+    			for (int i=0;i<obj.length && !val  ;i++ ) {
+    				if(obj[i]!=null){
+    					for (int j =0;j<obj.length;i++ ) {
+    						if(calculateNociveEffect(obj[j].getName())>calculateNociveEffect(obj[j+1].getName())){
+    							aux=obj[j+1];
+    							obj[j+1]=obj[j];
+    							obj[j]=aux;
+    						}
+    					}
+    				}
+    				else{
+    					val=true;
+    				}   			
+    			}
+    		}
+    	}
+    	else{
+    		val=true;
+    	}
+    	cont++;
+    }
+	
+	val = false;	
+	for (int t=0;t<obj.length && !val ;t++ ) {
+		if(obj[t]!=null){
+			msg+=obj[t].toString();
+		}
+		else{
+			val=true;
+		}
+	}
+	return msg;
+	
 }
 
 public Product buscarProducto(String id){
