@@ -1,4 +1,4 @@
-public class Recycling extends Waste{
+public class Recycling extends Waste implements Usable{
 //Atributos
 	public static final String PAPER = "Paper";
 	public static final String PAPERBOARD = "Paperboard";
@@ -39,6 +39,14 @@ public double calcularEfectoNocivo(){
 	double res = 0;
 	res= super.calcularEfectoNocivo()-this.getTime()*0.02;
 	return res;
+}
+
+public boolean aprovechable(){
+	boolean val = false;
+	if(!(desc.equalsIgnoreCase(""))){
+		val = true;
+	}
+	return val;
 }
 
 }

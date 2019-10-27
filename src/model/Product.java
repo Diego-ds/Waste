@@ -33,5 +33,30 @@ public String addWasteProd(Waste obj){
 
 }
 
-
+public String toString(){
+	String msg ="";
+	msg= "Name: "+name+"Id: "+id+"Description: "+desc+"\n";
+	return msg;
+}
+public String displayWaste(){
+	String msg="";
+	boolean val = false;
+	for (int i =0;i<residuos.length && !val ;i++ ) {
+		if(residuos[i]!=null){
+			if(residuos[i] instanceof BioDegradable){
+				BioDegradable obj = (BioDegradable)residuos[i];
+				msg+= obj.toString();
+			}
+			else if(residuos[i] instanceof Recycling){
+				Recycling obj1 = (Recycling)residuos[i];
+				msg+=obj1.toString();
+			}
+			else{
+				Inert obj2 = (Inert)residuos[i];
+				msg+=obj2.toString();
+			}
+		}
+	}
+	return msg;
+}
 }

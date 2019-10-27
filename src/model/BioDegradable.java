@@ -1,4 +1,4 @@
-public class BioDegradable extends Waste{
+public class BioDegradable extends Waste implements Usable{
 	//Atributos
 	private boolean compost;
 	//Constructor
@@ -38,5 +38,12 @@ public String toString(){
 	String msg = "";
 	msg = getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nAble to compose?: "+this.compost+"\n";
 	return msg;
+}
+public boolean aprovechable(){
+	boolean val = false;
+	if(getTime()<365 && compost==true){
+		val = true;
+	}
+	return val;
 }
 }

@@ -8,7 +8,7 @@ public abstract class Waste{
 	private int time;
 	private String prodRef;
 	public static final String INDUSTRIAL ="Industrial";
-	public static final String DOMICILIARIO ="Domiciliario";
+	public static final String DOMICILIARIO ="Domiciliary";
 	public static final String MUNICIPAL ="Municipal";
 	public static final String CONSTRUCCION ="Construction";
 	public static final String HOSPITALARIO ="Hospitalary";
