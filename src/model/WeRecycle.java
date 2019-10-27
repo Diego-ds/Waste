@@ -1,4 +1,5 @@
 package model;
+
 public class WeRecycle{
 //Atributos
 	private String name;
@@ -347,7 +348,6 @@ public String showProd(){
 	boolean val = false;
 	for (int i =0;i<pro.length && !val ;i++ ) {
 		if(pro[i]!=null){
-			msg= "";
 			msg+=pro[i].toString();
 		}
 		else{
