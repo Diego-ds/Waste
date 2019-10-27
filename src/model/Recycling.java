@@ -1,4 +1,5 @@
 package model;
+
 public class Recycling extends Waste implements Usable{
 //Atributos
 	public static final String PAPER = "Paper";

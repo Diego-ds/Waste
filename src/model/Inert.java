@@ -1,4 +1,5 @@
 package model;
+
 public class Inert extends Waste{
 	//Atributos
 	private String tip;

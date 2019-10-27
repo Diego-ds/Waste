@@ -1,6 +1,7 @@
 package ui;
 import model.*;
-import java.util.*;
+import java.util.Scanner;
+
 public class Main{
 	WeRecycle objRec;
 public Main(){

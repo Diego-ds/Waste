@@ -1,4 +1,5 @@
 package model;
+
 public class BioDegradable extends Waste implements Usable{
 	//Atributos
 	private boolean compost;
