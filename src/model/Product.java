@@ -35,7 +35,7 @@ public String addWasteProd(Waste obj){
 
 public String toString(){
 	String msg ="";
-	msg= "Name: "+name+"Id: "+id+"Description: "+desc+"\n";
+	msg= "------------------------------------------\n"+"Name: "+name+"\nId: "+id+"\nDescription: "+desc+"\n";
 	return msg;
 }
 public String displayWaste(){
@@ -48,13 +48,16 @@ public String displayWaste(){
 				msg+= obj.toString();
 			}
 			else if(residuos[i] instanceof Recycling){
-				Recycling obj1 = (Recycling)residuos[i];
-				msg+=obj1.toString();
+				Recycling obj = (Recycling)residuos[i];
+				msg+=obj.toString();
 			}
 			else{
-				Inert obj2 = (Inert)residuos[i];
-				msg+=obj2.toString();
+				Inert obj = (Inert)residuos[i];
+				msg+=obj.toString();
 			}
+		}
+		else{
+			val=true;
 		}
 	}
 	return msg;

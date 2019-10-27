@@ -6,16 +6,88 @@ public Main(){
 }
 
 public static void main(String args[]){
-
+	Scanner teclado = new Scanner(System.in);
+	Scanner teclado2 = new Scanner(System.in);
 	Main obj = new Main();
 	boolean val = true;
 	int option=0; 
-	obj.createWaste();
+	System.out.println("Welcome to RECICLAMOS\n");
+	while(val==true){
+		obj.showMenu();
+		option = teclado.nextInt();
+		switch(option){
+			case 1:
+			obj.createWaste();
+			break;
+			case 2:
+			obj.createProductAddWaste();
+			break;
+			case 3:
+			obj.showWaste();
+			break;
+			case 4:
+			obj.showProd();
+			break;
+			case 5:
+			System.out.println("\nEnter the name of the waste or the product identifier\n");
+			String n = teclado2.nextLine();
+			obj.searchWaste(n);
+			break;
+			case 6:
+			System.out.println("Enter the name of the waste to calculate its nocive effect\n");
+			String p = teclado2.nextLine();
+			obj.showNociveEffect(p);
+			break;
+			case 7:
+			System.out.println("Enter the name of the waste to show if its usable\n");
+            String k = teclado2.nextLine();
+            obj.isUsable(k);
+            break;
+            default:
+            val = false;
+
+
+		}
+	}
+	
+}
+
+public void showMenu(){
+	System.out.println("Enter the option\n");
+	System.out.println("<1> to add a waste\n");
+	System.out.println("<2> to add a product\n");
+	System.out.println("<3> to show the registered waste\n");
+	System.out.println("<4> to show the registered products\n");
+	System.out.println("<5> to search a waste by his name or product identifier\n");
+	System.out.println("<6> to calculate the nocive effect of a waste\n");
+	System.out.println("<7> to display if a Biodegradable or Recyclable waste is usable or not\n");
+	System.out.println("<8> to list the waste by its nocive effect from lower to more\n");
+	System.out.println("<8> to Exit\n");
+
+
+}
+
+public void isUsable(String n){
+	System.out.println(objRec.isUsable(n));
+}
+public void showNociveEffect(String n){
+	System.out.println(objRec.showNociveEffect(n));
+}
+public void searchWaste(String n){
+	System.out.println(objRec.searchWaste(n));
+}
+
+public void showProd(){
+	System.out.println(objRec.showProd());
+}
+public void showWaste(){
+	System.out.println(objRec.showWaste()); 
 }
 
 public void createWaste(){
 	Scanner teclado = new Scanner(System.in);
 	Scanner teclado2= new Scanner(System.in);
+	Scanner teclado3 = new Scanner(System.in);
 	int option = 0;
 	System.out.println("\nWhat type of waste do you want to add.\n<1> for Biodegradable\n<2> for Recyclable\n<3> for Inert\n");
 	option = teclado2.nextInt();
@@ -26,7 +98,7 @@ public void createWaste(){
 		System.out.println("Enter the identification of the waste\n");
 		String id = teclado.nextLine();
 		System.out.println("Enter the color of the waste\n");
-		String color = teclado.nextLine();
+		String color = teclado3.nextLine();
 		System.out.println("Select the origin of the waste.\n<1> Industrial\n<2> Domiciliary\n<3> Municipal\n<4> Construction\n<5> Hospitalary\n");
 		int help = teclado2.nextInt();
 		String origin = "";
@@ -57,7 +129,7 @@ public void createWaste(){
 		//Crear metodo en controladora para displayar productos
 		System.out.println(objRec.showProd());
 		String prodRef = teclado.nextLine();
-		objRec.addWaste(id,name,origin,color,time,prodRef,compost);
+		System.out.println(objRec.addWaste(id,name,origin,color,time,prodRef,compost));  
 		if(objRec.buscarProducto(prodRef)!=null){
 			System.out.println("Buscando.....\n");
 			System.out.println(objRec.buscarProducto(prodRef).addWasteProd(objRec.buscarWaste(name)));
@@ -66,7 +138,7 @@ public void createWaste(){
 			System.out.println("The product doesnt exist do you want to create it?\n<1> Yes\n<2> No\n");
 			int ans = teclado2.nextInt();
 			if(ans==1){
-				createProduct();
+				System.out.println(objRec.buscarProducto(createProduct()).addWasteProd(objRec.buscarWaste(name))); 
 			}
 
 		}
@@ -77,7 +149,7 @@ public void createWaste(){
 		System.out.println("Enter the identification of the waste\n");
 		String id1 = teclado.nextLine();
 		System.out.println("Enter the color of the waste\n");
-		String color1 = teclado.nextLine();
+		String color1 = teclado3.nextLine();
 		System.out.println("Select the origin of the waste.\n<1> Industrial\n<2> Domiciliary\n<3> Municipal\n<4> Construction\n<5> Hospitalary\n");
 		int help1 = teclado2.nextInt();
 		String origin1 = "";
@@ -119,7 +191,7 @@ public void createWaste(){
 		//Crear metodo en controladora para displayar productos
 		System.out.println(objRec.showProd());
 		String prodRef1 = teclado.nextLine();
-		objRec.addWaste(id1,name1,origin1,color1,time1,prodRef1,type,desc);
+		System.out.println(objRec.addWaste(id1,name1,origin1,color1,time1,prodRef1,type,desc));  
 		if(objRec.buscarProducto(prodRef1)!=null){
 			System.out.println("Buscando.....\n");
 			System.out.println(objRec.buscarProducto(prodRef1).addWasteProd(objRec.buscarWaste(name1)));
@@ -128,7 +200,7 @@ public void createWaste(){
 			System.out.println("The product doesnt exist do you want to create it?\n<1> Yes\n<2> No\n");
 			int ans1 = teclado2.nextInt();
 			if(ans1==1){
-				createProduct();
+				System.out.println(objRec.buscarProducto(createProduct()).addWasteProd(objRec.buscarWaste(name1))); 
 			}
 		}
 		break;
@@ -138,7 +210,7 @@ public void createWaste(){
 		System.out.println("Enter the identification of the waste\n");
 		String id2 = teclado.nextLine();
 		System.out.println("Enter the color of the waste\n");
-		String color2 = teclado.nextLine();
+		String color2 = teclado3.nextLine();
 		System.out.println("Select the origin of the waste.\n<1> Industrial\n<2> Domiciliary\n<3> Municipal\n<4> Construction\n<5> Hospitalary\n");
 		int help2 = teclado2.nextInt();
 		String origin2 = "";
@@ -161,11 +233,10 @@ public void createWaste(){
 		int time2 = teclado2.nextInt();
 		System.out.println("Enter a tip to reduce the use of this waste\n");
 		String tip = teclado.nextLine();
-		System.out.println("Enter the identification of the product that produce this waste\nHere a list of the registered products to help you out\n");
-		//Crear metodo en controladora para displayar productos
+		System.out.println("Enter the identification of the product that produce this waste\nHere a list of the registered products to help you out\nNote: If you want to create a new product enter a new identifier\n");
 		System.out.println(objRec.showProd());
 		String prodRef2 = teclado.nextLine();
-		objRec.addWaste(id2,name2,origin2,color2,time2,prodRef2,tip);
+		System.out.println(objRec.addWaste(id2,name2,origin2,color2,time2,prodRef2,tip));   
 		if(objRec.buscarProducto(prodRef2)!=null){
 			System.out.println("Buscando.....\n");
 			System.out.println(objRec.buscarProducto(prodRef2).addWasteProd(objRec.buscarWaste(name2)));
@@ -174,7 +245,8 @@ public void createWaste(){
 			System.out.println("The product doesnt exist do you want to create it?\n<1> Yes\n<2> No\n");
 			int ans2 = teclado2.nextInt();
 			if(ans2==1){
-				createProduct();
+				System.out.println(objRec.buscarProducto(createProduct()).addWasteProd(objRec.buscarWaste(name2))); 
+
 			}
 		}
 		break;
@@ -183,7 +255,7 @@ public void createWaste(){
 	}
 }
 
-public void createProduct(){
+public String createProduct(){
 	Scanner teclado = new Scanner(System.in);
 	System.out.println("Enter the name of the product\n");
 	String name = teclado.nextLine();
@@ -192,7 +264,41 @@ public void createProduct(){
 	System.out.println("Enter the description of the product\n");
 	String desc = teclado.nextLine();
 	System.out.println(objRec.addProduct(id,name,desc));
+	return id;
 }
+
+public void createProductAddWaste(){
+	Scanner teclado = new Scanner(System.in);
+	Scanner teclado2 = new Scanner(System.in);
+	System.out.println("Enter the name of the product\n");
+	String name = teclado.nextLine();
+	System.out.println("Enter the identification of the product\n");
+	String id = teclado.nextLine();
+	System.out.println("Enter the description of the product\n");
+	String desc = teclado.nextLine();
+	System.out.println(objRec.addProduct(id,name,desc));
+	System.out.println("You want to add waste to this product?\n<1> Yes\n<2> No\n");
+	int help = teclado2.nextInt();
+	if(help==1){
+		int option = 0;
+		String namewas = "";
+		while(help==1){
+		System.out.println("Here is a list of the waste to help you out\n");
+		System.out.println(objRec.showWaste()); 
+		System.out.println("You can add a waste just typing the name of the waste\n");
+		namewas=teclado.nextLine();
+		System.out.println(objRec.buscarProducto(id).addWasteProd(objRec.buscarWaste(namewas)));
+		System.out.println("You want to add another waste?\n<1> Yes\n<2> No\n");
+		option= teclado2.nextInt();
+			if(option==2){
+				help=2;
+			}
+		} 
+	}
+	
+}
+
+
 
 
 }

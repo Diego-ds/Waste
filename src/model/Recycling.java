@@ -23,7 +23,7 @@ public String getOrigin(){
 	return super.getOrigin();
 }
 public String getColor(){
-	return super.getOrigin();
+	return super.getColor();
 }
 public String getId(){
 	return super.getId();
@@ -31,7 +31,7 @@ public String getId(){
 
 public String toString(){
 	String msg = "";
-	msg = getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nType and description: "+this.type+"-"+this.desc+"\n";
+	msg = "-------------------------------------\n"+getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nType and description: "+this.type+"/"+this.desc+"\n";
 	return msg;
 }
 

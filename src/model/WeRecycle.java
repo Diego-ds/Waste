@@ -74,6 +74,62 @@ public String addProduct(String id,String name,String desc){
 	return msg;
 }
 
+public String showNociveEffect(String n){
+	boolean val = false;
+	String msg = "";
+	for (int i = 0;i<res.length && !val ;i++ ) {
+		if(buscarWaste(n)!=null){
+			if(buscarWaste(n) instanceof BioDegradable){
+				BioDegradable obj = (BioDegradable) buscarWaste(n);
+				String noc = String.valueOf(obj.calcularEfectoNocivo());
+				msg= "The nocive effect of the waste "+obj.getName()+" identified as "+obj.getId()+ " is "+noc+"\n";
+				val = true;
+			}
+			else if(buscarWaste(n) instanceof Recycling){
+				Recycling obj = (Recycling) buscarWaste(n);
+				String noc = String.valueOf(obj.calcularEfectoNocivo());
+				msg= "The nocive effect of the waste "+obj.getName()+" identified as "+obj.getId()+ " is "+noc+"\n";
+				val = true;
+			}
+			else{
+				Inert obj = (Inert) buscarWaste(n);
+				String noc = String.valueOf(obj.calcularEfectoNocivo());
+				msg= "The nocive effect of the waste "+obj.getName()+" identified as "+obj.getId()+ " is "+noc+"\n";
+				val = true;
+			}
+		}
+		else{
+			msg= "Error: Waste cannot be found. Please try again";
+			val=true;
+		}
+	}
+	return msg;
+}
+
+public String isUsable(String n){
+	String msg = "";
+	boolean val;
+	if(buscarWaste(n)!=null){
+		if(buscarWaste(n) instanceof BioDegradable){
+			BioDegradable obj = (BioDegradable)buscarWaste(n);
+		 	val=obj.aprovechable();
+		 	msg= obj.getName()+" identified as "+obj.getId()+" is usable? "+ val;
+		}
+		else if(buscarWaste(n) instanceof Recycling){
+			Recycling obj = (Recycling)buscarWaste(n);
+		 	val=obj.aprovechable();
+		 	msg= obj.getName()+" identified as "+obj.getId()+" is usable? "+ val;
+		}
+		else{
+			msg ="Error: the waste isn't biodegradable or recyclable";
+		}
+	}
+	else{
+		msg="Error: Cannot found waste. Please try again";
+	}
+	return msg;
+}
+
 public Product buscarProducto(String id){
 	boolean val=false;
 	Product obj =null;
@@ -109,6 +165,22 @@ public Waste buscarWaste(String name){
 	return obj;
 }
 
+public String searchWaste(String n){
+	boolean val = true;
+	String msg = "";
+	if(buscarWaste(n)!=null){
+		msg = buscarWaste(n).toString();
+	}
+    else if(buscarProducto(n)!=null){
+    	msg = buscarProducto(n).displayWaste();
+    }
+    else{
+    	msg ="Error: Waste not found. Please try again";
+    }
+    return msg;
+
+
+}
 public String showProd(){
 	String msg = "You have not registered products yet. Type something to continue\n";
 	boolean val = false;

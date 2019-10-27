@@ -17,7 +17,7 @@ public String getOrigin(){
 	return super.getOrigin();
 }
 public String getColor(){
-	return super.getOrigin();
+	return super.getColor();
 }
 public String getId(){
 	return super.getId();
@@ -30,7 +30,7 @@ public double calcularEfectoNocivo(){
 }
 public String toString(){
 	String msg = "";
-	msg = getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nTip: "+this.tip+"\n";
+	msg = "-------------------------------------\n"+getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nTip: "+this.tip+"\n";
 	return msg;
 }
 }
