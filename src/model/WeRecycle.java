@@ -1,3 +1,4 @@
+package model;
 public class WeRecycle{
 //Atributos
 	private String name;
@@ -11,7 +12,7 @@ public WeRecycle(String name){
 	pro = new Product[50];
 }
 /**
-* This method adds an waste <br>
+* This method adds a waste <br>
 * <b>post: </b> The waste has been added.<br>
 * @param id Id of the waste. id != null &amp;&amp; id != "".
 * @param name Name of the waste. name != null &amp;&amp; name != "".
@@ -37,6 +38,18 @@ public String addWaste(String id,String name,String origin,String color,int time
 	return msg;
 
 }
+/**
+* This method adds a waste <br>
+* <b>post: </b> The waste has been added.<br>
+* @param id Id of the waste. id != null &amp;&amp; id != "".
+* @param name Name of the waste. name != null &amp;&amp; name != "".
+* @param origin Origin of the waste. origin != null &amp;&amp; origin != "".
+* @param color Color of the waste. color != null &amp;&amp; color != "".
+* @param time Time to decompose. time != null &amp;&amp; time != "".
+* @param prodRef The id of the product which produce the waste. prodRef != null &amp;&amp; prodRef != "".
+* @param tip Tip to manage this waste. tip != null &amp;&amp; tip != "".
+* @return msg Indicating that the waste was created. msg != null &amp;&amp; msg != "".
+*/
 
 public String addWaste(String id,String name,String origin,String color,int time,String prodRef,String tip){
 	Inert rec = new Inert(id,name,origin,color,time,prodRef,tip);
@@ -52,6 +65,18 @@ public String addWaste(String id,String name,String origin,String color,int time
 	return msg;
 
 }
+/**
+* This method adds a waste <br>
+* <b>post: </b> The waste has been added.<br>
+* @param id Id of the waste. id != null &amp;&amp; id != "".
+* @param name Name of the waste. name != null &amp;&amp; name != "".
+* @param origin Origin of the waste. origin != null &amp;&amp; origin != "".
+* @param color Color of the waste. color != null &amp;&amp; color != "".
+* @param time Time to decompose. time != null &amp;&amp; time != "".
+* @param prodRef The id of the product which produce the waste. prodRef != null &amp;&amp; prodRef != "".
+* @param compost indicate if the waste is compostable. compost != null &amp;&amp; compost != "".
+* @return msg Indicating that the waste was created. msg != null &amp;&amp; msg != "".
+*/
 public String addWaste(String id,String name,String origin,String color,int time,String prodRef,boolean compost){
 	BioDegradable rec = new BioDegradable(id,name,origin,color,time,prodRef,compost);
 	boolean val =false;
@@ -66,7 +91,14 @@ public String addWaste(String id,String name,String origin,String color,int time
 	return msg;
 
 }
-
+/**
+* This method adds a product <br>
+* <b>post: </b> The product has been added.<br>
+* @param id Id of the product. id != null &amp;&amp; id != "".
+* @param name Name of the product. name != null &amp;&amp; name != "".
+* @param desc Description of the product. desc != null &amp;&amp; desc != "".
+* @return msg Indicating that the product was created. msg != null &amp;&amp; msg != "".
+*/
 public String addProduct(String id,String name,String desc){
 	Product obj = new Product(id,name,desc);
 	boolean val = false;
@@ -85,7 +117,12 @@ public String addProduct(String id,String name,String desc){
 	}
 	return msg;
 }
-
+/**
+* This method show the nocive effect of a waste<br>
+* <b>post: </b> The nocive effect has been displayed<br>
+* @param n Name of the waste to look for. n != null &amp;&amp; n != "".
+* @return msg Indicating the nocive of the waste. msg != null &amp;&amp; msg != "".
+*/
 public String showNociveEffect(String n){
 	boolean val = false;
 	String msg = "";
@@ -117,6 +154,12 @@ public String showNociveEffect(String n){
 	}
 	return msg;
 }
+/**
+* This method calculate the nocive effect of a waste<br>
+* <b>post: </b> The nocive effect has been calculated<br>
+* @param n Name of the waste to look for. n != null &amp;&amp; n != "".
+* @return noc The nocive effect of the waste. noc != null &amp;&amp; noc != "".
+*/
 public double calculateNociveEffect(String n){
 	boolean val = false;
 	String msg = "";
@@ -144,7 +187,12 @@ public double calculateNociveEffect(String n){
 	return noc;
 }
 
-
+/**
+* This method determine if a biodegradable or recyclabe waste its usable<br>
+* <b>post: </b> The waste has been cataloged<br>
+* @param n Name of the waste to look for. n != null &amp;&amp; n != "".
+* @return msg Indicating if the waste its usable or not. msg != null &amp;&amp; msg != "".
+*/
 
 public String isUsable(String n){
 	String msg = "";
@@ -169,7 +217,12 @@ public String isUsable(String n){
 	}
 	return msg;
 }
-
+/**
+* This method order the waste of a product by its nocive from more to lower<br>
+* <b>post: </b> The waste has been listed<br>
+* @param n Id of the product to look for. n != null &amp;&amp; n != "".
+* @return msg The wasted ordered in a chain text. msg != null &amp;&amp; msg != "".
+*/
 public String orderWaste(String n){
 	String msg = "";
 	boolean val = false;
@@ -216,7 +269,12 @@ public String orderWaste(String n){
 	return msg;
 	
 }
-
+/**
+* This method search a product by id <br>
+* <b>post: </b> The product has been searched<br>
+* @param id Id of the product to look for. id != null &amp;&amp; id != "".
+* @return obj The product founded.
+*/
 public Product buscarProducto(String id){
 	boolean val=false;
 	Product obj =null;
@@ -234,7 +292,12 @@ public Product buscarProducto(String id){
 	return obj;
 
 }
-
+/**
+* This method search a waste by name <br>
+* <b>post: </b> The waste has been searched<br>
+* @param name Name of the waste to look for. name != null &amp;&amp; name != "".
+* @return obj The waste founded.
+*/
 public Waste buscarWaste(String name){
 	boolean val =false;
 	Waste obj = null;
@@ -252,6 +315,12 @@ public Waste buscarWaste(String name){
 	return obj;
 }
 
+/**
+* This method search a waste by name or product identifier <br>
+* <b>post: </b> The waste has been searched<br>
+* @param n Name or the product identifier of the waste to look for. n != null &amp;&amp; n != "".
+* @return msg The waste converted to string. msg != null &amp;&amp; msg != "".
+*/
 public String searchWaste(String n){
 	boolean val = true;
 	String msg = "";
@@ -268,6 +337,11 @@ public String searchWaste(String n){
 
 
 }
+/**
+* This method show all the registered products <br>
+* <b>post: </b> The products has been displayed<br>
+* @return msg The products converted to string. msg != null &amp;&amp; msg != "".
+*/
 public String showProd(){
 	String msg = "You have not registered products yet. Type something to continue\n";
 	boolean val = false;
@@ -282,7 +356,11 @@ public String showProd(){
 	}
 	return msg;
 }
-
+/**
+* This method show all the registered waste <br>
+* <b>post: </b> The waste has been displayed<br>
+* @return msg The waste converted to string. msg != null &amp;&amp; msg != "".
+*/
 public String showWaste(){
 	String msg = "\nBiodegradable: \n";
 	String msg2= "\nRecyclable: \n";

@@ -1,3 +1,5 @@
+package ui;
+import model.*;
 import java.util.*;
 public class Main{
 	WeRecycle objRec;
@@ -60,7 +62,10 @@ public static void main(String args[]){
 	}
 	
 }
-
+/**
+* This method show the menu of options <br>
+* <b>post: </b> The menu has been showed.<br>
+*/
 public void showMenu(){
 	System.out.println("Enter the option\n");
 	System.out.println("<1> to add a waste\n");
@@ -94,7 +99,10 @@ public void showProd(){
 public void showWaste(){
 	System.out.println(objRec.showWaste()); 
 }
-
+/**
+* This method recollect the information to create a waste <br>
+* <b>post: </b> The information has been recollected.<br>
+*/
 public void createWaste(){
 	Scanner teclado = new Scanner(System.in);
 	Scanner teclado2 = new Scanner(System.in);
@@ -265,7 +273,11 @@ public void createWaste(){
 		System.out.println("Error: Wrong option\n");
 	}
 }
-
+/**
+* This method recollect the information to create a product<br>
+* <b>post: </b> The information has been recollected.<br>
+* @return id The id of the product. id != null &amp;&amp; id != "".
+*/
 public String createProduct(){
 	Scanner teclado = new Scanner(System.in);
 	System.out.println("Enter the name of the product\n");
@@ -277,7 +289,10 @@ public String createProduct(){
 	System.out.println(objRec.addProduct(id,name,desc));
 	return id;
 }
-
+/**
+* This method recollect the information to create a product <br>
+* <b>post: </b> The information has been recollected.<br>
+*/
 public void createProductAddWaste(){
 	Scanner teclado = new Scanner(System.in);
 	Scanner teclado2 = new Scanner(System.in);

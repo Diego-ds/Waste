@@ -1,3 +1,4 @@
+package model;
 public class Inert extends Waste{
 	//Atributos
 	private String tip;
@@ -22,12 +23,15 @@ public String getColor(){
 public String getId(){
 	return super.getId();
 }
+//Method to get the nocive
+@Override
 public double calcularEfectoNocivo(){
 	double res = 0;
 	res= super.calcularEfectoNocivo();
 	return res;
 
 }
+//Convert the waste to a string
 public String toString(){
 	String msg = "";
 	msg = "-------------------------------------\n"+getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nTip: "+this.tip+"\n";

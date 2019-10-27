@@ -1,3 +1,4 @@
+package model;
 public class BioDegradable extends Waste implements Usable{
 	//Atributos
 	private boolean compost;
@@ -22,6 +23,7 @@ public String getColor(){
 public String getId(){
 	return super.getId();
 }
+@Override
 public double calcularEfectoNocivo(){
 	double res = 0;
 if(compost){
@@ -34,11 +36,13 @@ else{
 return res;
 
 }
+//Convert the waste to a String
 public String toString(){
 	String msg = "";
 	msg = "-------------------------------------\n"+getName() + "\nId: "+getId()+"\nOrigin: "+getOrigin()+"\nColor: "+getColor()+"\n"+getTime()+" days to decompose"+"\nAble to compose?: "+this.compost+"\n";
 	return msg;
 }
+//Interface method implemented
 public boolean aprovechable(){
 	boolean val = false;
 	if(getTime()<365 && compost==true){

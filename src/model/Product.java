@@ -1,3 +1,4 @@
+package model;
 public class Product{
 //Atributos
 	private String id;
